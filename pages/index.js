@@ -30,6 +30,51 @@ let kids = [
   "Chips and dip",
 ];
 
+let words = [
+  "Stapler",
+  "Desk",
+  "Pay check",
+  "Fax machine",
+  "Phone",
+  "Paper",
+  "Light",
+  "Calculator",
+  "Calendar",
+  "Notebook",
+  "Book",
+  "Chairs",
+  "Glue",
+  "Chocolate",
+  "Secretary",
+  "Work",
+  "Paperwork",
+  "Coffee",
+  "Laptop",
+  "Bamboo",
+  "Hammer",
+  "Frog",
+  "Pants",
+  "Bridge",
+  "Candy",
+  "Bucket",
+  "Snowman",
+  "Cream",
+  "Waffle",
+  "Pancake",
+  "Ice cream",
+  "Beach",
+  "Sunglass",
+  "Surfboad",
+  "Watermelon",
+  "Baseball",
+  "Bat",
+  "Ball",
+  "T-shirt",
+  "Kiss",
+  "Jellyfish",
+  "Jelly",
+];
+
 let adults = [
   "Applying makeup",
   "Getting dressed/undressed",
@@ -109,14 +154,14 @@ export default function Home() {
   };
 
   const calculate = () => {
-    if (kids.length === 0) {
+    if (words.length === 0) {
       setCurrentWord("Game Over");
       return;
     }
-    const rand = getRandomInt(0, kids.length);
-    setCurrentWord(kids[rand]);
-    console.log(kids[rand], rand);
-    kids = kids.filter((_, index) => index !== rand);
+    const rand = getRandomInt(0, words.length);
+    setCurrentWord(words[rand]);
+    console.log(words[rand], rand);
+    words = words.filter((_, index) => index !== rand);
   };
 
   const handleNext = (e) => {
