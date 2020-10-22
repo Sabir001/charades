@@ -110,6 +110,16 @@
   line-height: 1.5;
 }
 
+.card button {
+  font-size: 1.25rem;
+  line-height: 1.5;
+  color: #fff;
+  border-radius: 10%;
+  background-color: #0070f3;
+  border-color: #0070f3;
+
+}
+
 .logo {
   height: 1em;
 }
