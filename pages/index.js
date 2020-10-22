@@ -1,65 +1,150 @@
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import Head from "next/head";
+import React, { useState, useEffect } from "react";
+
+import styles from "../styles/Home.module.css";
+
+let kids = [
+  "Running/jogging",
+  "Playing baseball",
+  "Playing basketball",
+  "Playing tennis",
+  "Throwing a football",
+  "Throwing a frisbee",
+  "Playing golf",
+  "Swimming",
+  "Skateboarding",
+  "Riding a bike",
+  "Riding a scooter",
+  "Jumping rope",
+  "Banana",
+  "Orange",
+  "Ice cream",
+  "Lollipop",
+  "Bubblegum",
+  "Spaghetti",
+  "Sandwich",
+  "French fries",
+  "Hot dog",
+  "Taco",
+  "Milk and cookies",
+  "Chips and dip",
+];
+
+let adults = [
+  "Applying makeup",
+  "Getting dressed/undressed",
+  "Applying lotion",
+  "Washing hair",
+  "Buckling a belt",
+  "Buttoning a shirt",
+  "Feeding a baby a bottle",
+  "Feeding a baby food",
+  "Burping a baby",
+  "Pushing a baby in a stroller",
+  "Changing a diaper",
+  "Cutting food with a knife",
+  "Opening a can",
+  "Putting dishes in the dishwasher",
+  "Washing dishes in the sink",
+  "Doing laundry",
+  "Mopping floors",
+  "Sweeping floors",
+  "Vacuuming floors",
+  "Dusting furniture",
+  "Fluffing pillows",
+  "Making a bed",
+  "Cooking pancakes",
+  "Icing a cake",
+  "Driving a car",
+  "Listening to music",
+  "Singing",
+  "Typing",
+  "Writing",
+  "Shopping for groceries",
+  "Checking the mail",
+  "Opening a letter",
+  "Coughing",
+  "Sneezing",
+  "Scratching",
+  "Mowing the lawn",
+  "Raking leaves",
+  "Picking flowers",
+  "Shoveling snow",
+  "Watering plants",
+  "Smoking a cigarette",
+  "Lighting candles",
+  "Blowing out candles",
+  "Sharpening a pencil",
+  "Spray painting",
+  "Painting with a brush",
+  "Watching television",
+  "Going to the movies",
+  "Going on a picnic",
+  "Opening a present",
+  "Going to church/praying",
+  "Going to the gym",
+  "Going to school",
+  "Going to the hospital/doctor",
+];
 
 export default function Home() {
+  const [currentWord, setCurrentWord] = useState("");
+
+  const getRandomInt = (min, max) => {
+    return Math.floor(Math.random() * (max - min) + min);
+  };
+
+  const calculate = () => {
+    if (adults.length === 0) {
+      setCurrentWord("Game Over");
+      return;
+    }
+    const rand = getRandomInt(0, adults.length);
+    setCurrentWord(adults[rand]);
+    console.log(adults[rand], rand);
+    adults = adults.filter((_, index) => index !== rand);
+  };
+
+  const handleNext = (e) => {
+    e.preventDefault();
+    calculate();
+  };
+
+  useEffect(() => {
+    calculate();
+  }, []);
+
+  useEffect(() => {
+    console.log(currentWord);
+  }, [currentWord]);
+
   return (
     <div className={styles.container}>
       <Head>
-        <title>Create Next App</title>
+        <title>Carades by Sabir</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
+        <h1 className={styles.title}>Charades</h1>
 
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
+        <p className={styles.description}>Play as a team</p>
 
         <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
+          <div className={styles.card}>
+            <h3>Current Word &rarr;</h3>
+          </div>
 
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
+          <div className={styles.card}>
+            <h3>{currentWord} &rarr;</h3>
+          </div>
+          <div className={styles.card} onClick={handleNext}>
+            <button>Next</button>
+          </div>
         </div>
       </main>
 
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
+      <footer className={styles.footer}>Copyright @ Sabir</footer>
     </div>
-  )
+  );
 }
