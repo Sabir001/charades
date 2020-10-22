@@ -109,14 +109,14 @@ export default function Home() {
   };
 
   const calculate = () => {
-    if (adults.length === 0) {
+    if (kids.length === 0) {
       setCurrentWord("Game Over");
       return;
     }
-    const rand = getRandomInt(0, adults.length);
-    setCurrentWord(adults[rand]);
-    console.log(adults[rand], rand);
-    adults = adults.filter((_, index) => index !== rand);
+    const rand = getRandomInt(0, kids.length);
+    setCurrentWord(kids[rand]);
+    console.log(kids[rand], rand);
+    kids = kids.filter((_, index) => index !== rand);
   };
 
   const handleNext = (e) => {
