@@ -136,7 +136,7 @@ export default function Home() {
           </div>
 
           <div className={styles.card}>
-            <h3>{currentWord} &rarr;</h3>
+            <h3>{currentWord}</h3>
           </div>
           <div className={styles.card} onClick={handleNext}>
             <button>Next</button>
