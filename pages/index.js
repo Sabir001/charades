@@ -85,6 +85,20 @@ let adults = [
   "Going to the gym",
   "Going to school",
   "Going to the hospital/doctor",
+  "Doing yoga",
+  "Ballet dancing",
+  "Tap dancing",
+  "Salsa dancing",
+  "Playing croquet",
+  "Playing horseshoes",
+  "Surfing",
+  "Water skiing",
+  "Snow skiing",
+  "Riding a motorcycle",
+  "Playing pool/billiards",
+  "Bowling",
+  "Fishing",
+  "Shooting a bow and arrow",
 ];
 
 export default function Home() {
